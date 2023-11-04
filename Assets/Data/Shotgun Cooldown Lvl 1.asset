@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a980d02af685f4698d39e2fbbfbded, type: 3}
+  m_Name: Shotgun Cooldown Lvl 1
+  m_EditorClassIdentifier: 
+  upgradeName: Shotgun Fire Rate Lvl.1
+  upgradeDescription: Increases the rate of fire for the Shotgun Basic Weapon.
+  upgradeAdvancedDetails: Fire Rate Delay X -> X (change this later)
+  upgradeCost: 7
+  upgradeIcon: {fileID: 21300000, guid: 2f78f1e70903a3448bc9d95ff01d2900, type: 3}
+  upgradeID: 7
+  upgradesToAdd: 08000000
+  upgradesToRemove: 07000000

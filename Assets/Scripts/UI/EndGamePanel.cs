@@ -15,6 +15,11 @@ public class EndGamePanel : BasePanel
 
     [Header("Buttons")]
     public Button restartButton;
+    public Button mainMenuButton;
+
+    [Header("Attract Mode List")]
+    public List<Asteroid> attractModeList = new List<Asteroid>();
+
 
     protected override void Awake()
     {
@@ -25,12 +30,14 @@ public class EndGamePanel : BasePanel
     {
         base.Open();
         restartButton.interactable = false;
+        mainMenuButton.interactable = false;
         FadeIn(EnableButton);
     }
 
     private void EnableButton()
     {
         restartButton.interactable = true;
+        mainMenuButton.interactable = true;
     }
 
     public void Setup(bool playerDied)
@@ -57,6 +64,27 @@ public class EndGamePanel : BasePanel
         PanelManager.GetPanel<HUD>().SetScoreText("0");
         FadeOut(Close);
         AudioManager.SwapMusic(AudioTrack.Sprint);
+    }
+
+    public void OnMainMenuClicked()
+    {
+        
+
+        mainMenuButton.interactable = false;
+        PanelManager.GetPanel<HUD>().Close();
+        killLog.ClearCounterEntries();
+        PanelManager.GetPanel<HUD>().SetScoreText("0");
+        FadeOut(Close);
+        AudioManager.SwapMusic(AudioTrack.MainMenu);
+        PanelManager.OpenPanel<MainMenuPanel>().Open();
+        GameManager.gameManagerInstance.RemoveAllEnemies();
+        //clear the healthbars from the ones that I remove.
+
+        for (int i = 0; i < attractModeList.Count; i++)
+        {
+            GameManager.gameManagerInstance.SpawnASingleEnemy(attractModeList[i]);
+        }
+        GameManager.gameManagerInstance.CleanUpHealthbars();
     }
 
 }

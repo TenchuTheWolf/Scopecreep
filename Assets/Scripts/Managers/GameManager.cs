@@ -32,10 +32,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         DevHellMode.devHellModeActive = false;
- 
-        for (int i = 0; i < activeEnemies.Count; i++)
+
+        if(activeEnemies.Count > 0)
         {
-            activeEnemies[i].CleanupHealthBar();
+            CleanUpHealthbars();
         }
 
         waveManager.ResetWaveCount();
@@ -107,6 +107,20 @@ public class GameManager : MonoBehaviour
         }
         activeEnemies.Clear();
         killList.Clear();
+    }
+
+    public void CleanUpHealthbars()
+    {
+        if(activeEnemies.Count == 0)
+        {
+            Debug.Log("Tried to clean up health bars while there were no active enemies.");
+            return;
+        }
+
+        for (int i = 0; i < activeEnemies.Count; i++)
+        {
+            activeEnemies[i].CleanupHealthBar();
+        }
     }
 
     public static void EnlistEnemy(NPC target)

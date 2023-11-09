@@ -77,14 +77,16 @@ public class EndGamePanel : BasePanel
         FadeOut(Close);
         AudioManager.SwapMusic(AudioTrack.MainMenu);
         PanelManager.OpenPanel<MainMenuPanel>().Open();
+        //Need to remove healthbars before removing enemies or they get stuck.
+        GameManager.gameManagerInstance.CleanUpHealthbars();
         GameManager.gameManagerInstance.RemoveAllEnemies();
-        //clear the healthbars from the ones that I remove.
 
         for (int i = 0; i < attractModeList.Count; i++)
         {
             GameManager.gameManagerInstance.SpawnASingleEnemy(attractModeList[i]);
         }
         GameManager.gameManagerInstance.CleanUpHealthbars();
+        //Need to remove healthbars after repopulating the attractor mode enemies on the main screen.
     }
 
 }

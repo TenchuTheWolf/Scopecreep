@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class MainMenuPanel : BasePanel
 {
+
+    public MainMenuTextCycler myTextCycler;
+
     public override void Open()
     {
         base.Open();
         AudioManager.SwapMusic(AudioTrack.MainMenu);
+
+        myTextCycler.SetUpCommentaryBox();
+        //myTextCycler.StartCommentaryBoxTimer();
     }
 
 

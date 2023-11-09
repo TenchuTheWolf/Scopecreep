@@ -511,6 +511,11 @@ public class Player : MonoBehaviour
 
     public void EnableEnhancedVacuum()
     {
+        if(vacuumCollider2D == null)
+        {
+            Debug.Log("Tried to access the vacuum collider. Player was probably destroyed when this happened.");
+            return;
+        }
         vacuumCollider2D.radius = endOfWaveVacuumRadius;
         vacuumController.forceMagnitude = endOfWaveVacuumMagnitude;
     }

@@ -17,23 +17,25 @@ public class MainMenuTextCycler : MonoBehaviour
 
     private void Awake()
     {
-        usedCommentary.Clear();
         targetTextBox = GetComponent<TextMeshProUGUI>();
-        StartCoroutine(ParseText(mainMenuCommentary[0], textParseDelay));
-        usedCommentary.Add(mainMenuCommentary[0]);
+
+        SetUpCommentaryBox();
     }
 
-    private void Start()
+    public void SetUpCommentaryBox()
     {
+        usedCommentary.Clear();
+        StartCoroutine(ParseText(mainMenuCommentary[0], textParseDelay));
+        usedCommentary.Add(mainMenuCommentary[0]);
         StartCoroutine(TextUpdateTimer());
     }
+
 
     private void UpdateDialogue()
     {
 
         if(PanelManager.GetPanel<MainMenuPanel>().IsOpen == true)
         {
-
             if(usedCommentary.Count == mainMenuCommentary.Count)
             {
                 string lastComment = usedCommentary[usedCommentary.Count - 1];
@@ -58,13 +60,13 @@ public class MainMenuTextCycler : MonoBehaviour
 
     }
 
-    private IEnumerator TextUpdateTimer()
+    public IEnumerator TextUpdateTimer()
     {
         yield return new WaitForSeconds(textCycleDelay);
         UpdateDialogue();
     }
 
-    private IEnumerator ParseText(string textToParse, float parseDelay)
+    public IEnumerator ParseText(string textToParse, float parseDelay)
     {
         string fullText = textToParse;
 

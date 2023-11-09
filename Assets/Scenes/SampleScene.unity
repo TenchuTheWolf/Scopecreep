@@ -13092,6 +13092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showMenuCursor: 1
   fadeModifier: 1
+  myTextCycler: {fileID: 69969241}
 --- !u!1 &1626053386
 GameObject:
   m_ObjectHideFlags: 0
